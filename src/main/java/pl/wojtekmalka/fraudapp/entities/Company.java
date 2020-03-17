@@ -16,10 +16,16 @@ public class Company {
     private long companyId;
     private LocalDate createDate = LocalDate.now();
     private int NIP;
-    private java.lang.String companyName;
+    private String companyName;
     @Enumerated(EnumType.STRING)
     private FRAUD_STATUS fraudStatus;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
+    public Company(int NIP, String companyName, FRAUD_STATUS fraudStatus, Address address) {
+        this.NIP = NIP;
+        this.companyName = companyName;
+        this.fraudStatus = fraudStatus;
+        this.address = address;
+    }
 }

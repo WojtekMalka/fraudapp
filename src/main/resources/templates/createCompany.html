@@ -13,23 +13,39 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <h2><p>Dodaj osobę fizyczną</p></h2>
+    <h2><p>Dodaj przedsiębiorstwo</p></h2>
     <form th:action="@{/create/addCompany}" method="post" th:object="${addCompany}">
         <label>NIP</label>
-        <input th:type="number" th:field="*{NIP}" />
-        <br />
+        <input th:type="number" th:field="*{NIP}"/>
+        <br/>
         <label>Company name</label>
-        <input th:type="text" th:field="*{companyName}" />
-        <!--        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>-->
-        <br />
+        <input th:type="text" th:field="*{companyName}"/>
+        <br/>
         <label>Fraud Status</label>
-        <input th:type="text" th:field="*{fraudStatus}" />
-        <!--        <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Name Error</div>-->
-        <br />
-        <label>Address</label>
-        <input th:type="text" th:field="*{address}" />
-        <br />
+        <select th:field="*{fraudStatus}">
+            <option th:value="'FRAUD'" th:text="FRAUD"></option>
+            <option th:value="'CLEAR'" th:text="CLEAR"></option>
+            <option th:value="'SUSPECT'" th:text="SUSPECT"></option>
+        </select>
+        <br/>
+        <h3><p>Adres</p></h3>
+        <label>Miasto</label>
+        <input th:type="text" th:field="*{companyAddress.city}"/>
+        <br/>
+        <label>Kod pocztowy</label>
+        <input th:type="number" th:field="*{companyAddress.postCode}"/>
+        <br/>
+        <label>Ulica</label>
+        <input th:type="text" th:field="*{companyAddress.street}"/>
+        <br/>
+        <label>Numer domu</label>
+        <input th:type="number" th:field="*{companyAddress.streetNumber}"/>
+        <br/>
+        <label>Numer mieszkania</label>
+        <input th:type="number" th:field="*{companyAddress.houseNumber}"/>
+        <br/>
         <button th:type="submit">Dodaj</button>
+        <button><a th:href="@{'/create'}">Wstecz</a></button>
     </form>
 </div>
 </body>
