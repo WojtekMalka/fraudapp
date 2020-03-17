@@ -5,19 +5,24 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Create page</title>
+    <title>Create Page</title>
 </head>
 <body>
-<div layout:fragment="content">
-    <h2><p>Dodawanie wpisów</p></h2>
-    <th:block>
-        <td>
-            <button><a th:href="@{'/create/addPerson'}">Dodaj osobę</a></button>
-            <button><a th:href="@{'/create/addCompany'}">Dodaj firmę</a></button>
-            <button><a th:href="@{'/'}">Wstecz</a></button>
-        </td>
-    </th:block>
+<div class="mx-auto">
+    <h2><p class="text-center">Dodawanie wpisów</p></h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-3"><a th:href="@{'/create/addPerson'}" class="btn btn-primary btn-lg btn-block" role="button"
+                              aria-pressed="true">Dodaj osobę</a></div>
+        <div class="col-3"><a th:href="@{'/create/addCompany'}" class="btn btn-primary btn-lg btn-block" role="button"
+                              aria-pressed="true">Dodaj firmę</a></div>
+        <div class="col-3"><a th:href="@{'/'}" class="btn btn-primary btn-lg btn-block " role="button"
+                              aria-pressed="true">Wstecz</a></div>
+    </div>
 </div>
 </body>
 </html>

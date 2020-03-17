@@ -28,4 +28,10 @@ public class CreateServiceImpl implements CreateService {
     public void addCompany(CompanyForm form) {
         companyRepository.save(new Company(form.getNIP(), form.getCompanyName(), form.getFraudStatus(), form.getCompanyAddress()));
     }
+
+    @Override
+    public Person getPersonByPESEL(int PESEL) {
+        personRepository.findByPESEL(PESEL);
+        return null;
+    }
 }

@@ -8,19 +8,21 @@
 
 >
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Home Page</title>
 </head>
 <body>
-<div layout:fragment="content">
-    <h1><p>Witamy w serwisie Woodcut</p></h1>
-    <th:block>
-        <td>
-            <button><a th:href="@{'/create'}">Dodaj wpis</a></button>
-        </td>
-    </th:block>
+<div class="mx-auto">
+    <h2><p class="text-center">Witamy w serwisie Woodcut</p></h2>
 </div>
-</body>
-</div>
+<form>
+    <div class="form-group">
+        <div class="col-md">
+            <a th:href="@{'/create'}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Dodaj wpis</a></button>
+        </div>
+    </div>
+</form>
 </body>
 </html>
