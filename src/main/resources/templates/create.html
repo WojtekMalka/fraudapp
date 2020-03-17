@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/layout"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+    <meta charset="UTF-8">
+    <title>Create page</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2><p>Dodawanie wpisów</p></h2>
+    <th:block>
+        <td>
+            <button><a th:href="@{'/create/addPerson'}">Dodaj osobę</a></button>
+            <button><a th:href="@{'/create/addCompany'}">Dodaj firmę</a></button>
+        </td>
+    </th:block>
+</div>
+</body>
+</html>
