@@ -14,24 +14,39 @@
 <body>
 <div layout:fragment="content">
     <h2><p>Dodaj osobę fizyczną</p></h2>
-    <form th:action="@{/addPerson}" method="post" th:object="${addPerson}">
+    <form th:action="@{/create/addPerson}" method="post" th:object="${addPerson}">
         <label>PESEL</label>
-        <input th:type="number" th:field="*{PESEL}" />
-        <br />
+        <input th:type="number" th:field="*{PESEL}"/>
+        <br/>
         <label>First Name</label>
-        <input th:type="text" th:field="*{firstName}" />
-        <!--        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>-->
-        <br />
+        <input th:type="text" th:field="*{firstName}"/>
+        <br/>
         <label>Last Name</label>
-        <input th:type="text" th:field="*{lastName}" />
-        <!--        <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Name Error</div>-->
-        <br />
+        <input th:type="text" th:field="*{lastName}"/>
+        <br/>
         <label>Fraud Status</label>
-        <input th:type="text" th:field="*{fraudStatus}" />
-        <br />
-        <label>Adres</label>
-        <input th:type="text" th:field="*{personAddress}" />
-        <br />
+        <select th:field="*{fraudStatus}">
+            <option th:value="'FRAUD'" th:text="FRAUD"></option>
+            <option th:value="'CLEAR'" th:text="CLEAR"></option>
+            <option th:value="'SUSPECT'" th:text="SUSPECT"></option>
+        </select>
+        <br/>
+        <h3><p>Adres</p></h3>
+        <label>Miasto</label>
+        <input th:type="text" th:field="*{personAddress.city}"/>
+        <br/>
+        <label>Kod pocztowy</label>
+        <input th:type="number" th:field="*{personAddress.postCode}"/>
+        <br/>
+        <label>Ulica</label>
+        <input th:type="text" th:field="*{personAddress.street}"/>
+        <br/>
+        <label>Numer domu</label>
+        <input th:type="number" th:field="*{personAddress.streetNumber}"/>
+        <br/>
+        <label>Numer mieszkania</label>
+        <input th:type="number" th:field="*{personAddress.houseNumber}"/>
+        <br/>
         <button th:type="submit">Dodaj</button>
     </form>
 </div>

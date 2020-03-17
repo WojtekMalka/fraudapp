@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="layout/layout"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout "
+
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2><p>Dodaj osobę fizyczną</p></h2>
+    <form th:action="@{/create/addCompany}" method="post" th:object="${addCompany}">
+        <label>NIP</label>
+        <input th:type="number" th:field="*{NIP}" />
+        <br />
+        <label>Company name</label>
+        <input th:type="text" th:field="*{companyName}" />
+        <!--        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>-->
+        <br />
+        <label>Fraud Status</label>
+        <input th:type="text" th:field="*{fraudStatus}" />
+        <!--        <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Name Error</div>-->
+        <br />
+        <label>Address</label>
+        <input th:type="text" th:field="*{address}" />
+        <br />
+        <button th:type="submit">Dodaj</button>
+    </form>
+</div>
+</body>
+</div>
+</body>
+</html>

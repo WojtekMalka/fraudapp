@@ -13,11 +13,13 @@ import java.time.LocalDate;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long businessId;
+    private long companyId;
     private LocalDate createDate = LocalDate.now();
     private int NIP;
-    private String companyName;
+    private java.lang.String companyName;
+    @Enumerated(EnumType.STRING)
     private FRAUD_STATUS fraudStatus;
     @OneToOne
-    private Addresses address;
+    private Address address;
+
 }

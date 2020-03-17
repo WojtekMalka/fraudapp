@@ -1,4 +1,7 @@
 package pl.wojtekmalka.fraudapp.repository;
 
-public interface CompanyRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import pl.wojtekmalka.fraudapp.entities.Company;
+
+public interface CompanyRepository extends JpaRepository<Company, Long> {
 }

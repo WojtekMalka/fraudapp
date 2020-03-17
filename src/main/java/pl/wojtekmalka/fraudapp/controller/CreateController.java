@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import pl.wojtekmalka.fraudapp.form.CompanyForm;
 import pl.wojtekmalka.fraudapp.form.PersonForm;
 import pl.wojtekmalka.fraudapp.service.CreateService;
 
@@ -19,7 +20,7 @@ public class CreateController {
     }
 
     @RequestMapping
-    public ModelAndView getCreatePage(){
+    public ModelAndView getCreatePage() {
         ModelAndView mnv = new ModelAndView("create");
         mnv.addObject("create");
         return mnv;
@@ -35,6 +36,19 @@ public class CreateController {
     @PostMapping("/addPerson")
     public String addPerson(@ModelAttribute("addPerson") PersonForm form) {
         createService.addPerson(form);
+        return "redirect:/";
+    }
+
+    @GetMapping("/addCompany")
+    public ModelAndView addCompanyPage(){
+        ModelAndView mnv = new ModelAndView("createCompany");
+        mnv.addObject("addCompany", new CompanyForm());
+        return mnv;
+    }
+
+    @PostMapping("/addCompany")
+    public String addCompany(@ModelAttribute("addCompany") CompanyForm form){
+        createService.addCompany(form);
         return "redirect:/create";
     }
 }

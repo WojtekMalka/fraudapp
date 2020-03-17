@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Entity(name = "Addresses")
 @Getter
 @NoArgsConstructor
-public class Addresses {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long addressId;
