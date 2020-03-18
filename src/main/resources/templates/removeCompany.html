@@ -11,16 +11,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Remove company page</title>
 </head>
 <body>
 <div class="mx-auto">
-    <h1><p class="text-center">Witamy w serwisie Woodcut</p></h1>
+    <h2><p>Usuń przedsiębiorstwo</p></h2>
 </div>
-<div class="row">
-    <div class="col-4">
-        <a th:href="@{'/subjectsManager'}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Manager wpisów</a></button>
-    </div>
-</div>
+<form th:action="@{/subjectsManager/removeCompany}" method="post" th:object="${removeCompany}">
+    <label>NIP</label>
+    <input th:type="number" th:field="*{NIP}"/>
+    <button th:type="submit">Usuń</button>
+    <br/>
+</form>
 </body>
 </html>

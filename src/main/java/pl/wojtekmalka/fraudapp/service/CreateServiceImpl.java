@@ -1,13 +1,14 @@
 package pl.wojtekmalka.fraudapp.service;
 
 import org.springframework.stereotype.Service;
-import pl.wojtekmalka.fraudapp.entities.Address;
 import pl.wojtekmalka.fraudapp.entities.Company;
 import pl.wojtekmalka.fraudapp.entities.Person;
 import pl.wojtekmalka.fraudapp.form.CompanyForm;
 import pl.wojtekmalka.fraudapp.form.PersonForm;
 import pl.wojtekmalka.fraudapp.repository.CompanyRepository;
 import pl.wojtekmalka.fraudapp.repository.PersonRepository;
+
+import java.util.List;
 
 @Service
 public class CreateServiceImpl implements CreateService {
@@ -30,8 +31,17 @@ public class CreateServiceImpl implements CreateService {
     }
 
     @Override
-    public Person getPersonByPESEL(int PESEL) {
-        personRepository.findByPESEL(PESEL);
-        return null;
+    public void deleteAllPersonsByPESEL(int PESEL) {
+        personRepository.deleteAllByPESEL(PESEL);
+    }
+
+    @Override
+    public void deleteAllCompanyByNIP(int NIP) {
+        companyRepository.deleteAllByNIP(NIP);
+    }
+
+    @Override
+    public List<Person> findAllPersonsByPESEL(int PESEL) {
+        return personRepository.findAllByPESEL(PESEL);
     }
 }

@@ -13,9 +13,9 @@
     <title>Home Page</title>
 </head>
 <body>
-<div layout:fragment="content">
+<div class="container">
     <h2><p>Dodaj osobę fizyczną</p></h2>
-    <form th:action="@{/create/addPerson}" method="post" th:object="${addPerson}">
+    <form th:action="@{/subjectsManager/addPerson}" method="post" th:object="${addPerson}">
         <label>PESEL</label>
         <input th:type="number" th:field="*{PESEL}"/>
         <br/>
@@ -49,7 +49,7 @@
         <input th:type="number" th:field="*{personAddress.houseNumber}"/>
         <br/>
         <button th:type="submit">Dodaj</button>
-        <button><a th:href="@{'/create'}">Wstecz</a></button>
+        <button><a th:href="@{'/subjectsManager'}">Wstecz</a></button>
     </form>
 </div>
 </body>

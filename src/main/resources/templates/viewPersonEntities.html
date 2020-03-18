@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="layout/layout"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout "
+
+>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>View Person</title>
+</head>
+<body>
+<div class="mx-auto">
+    <h1><p class="text-center">Podgląd osoby fizycznej</p></h1>
+</div>
+<table class="table">
+    <tbody>
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">fraudstatus</th>
+    </tr>
+    </thead>
+    <th:block th:each="person : ${viewPersonEntities}">
+        <tr>
+            <td th:text="${person.personId}"></td>
+            <td th:text="${person.firstName}"></td>
+            <td th:text="${person.lastName}"></td>
+            <td th:text="${person.fraudStatus}"></td>
+        </tr><br>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

@@ -11,16 +11,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Remove person page</title>
 </head>
 <body>
 <div class="mx-auto">
-    <h1><p class="text-center">Witamy w serwisie Woodcut</p></h1>
+    <h2><p>Usuń osobę fizyczną</p></h2>
 </div>
-<div class="row">
-    <div class="col-4">
-        <a th:href="@{'/subjectsManager'}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Manager wpisów</a></button>
-    </div>
-</div>
+<form th:action="@{/subjectsManager/viewPerson}" method="post" th:object="${viewPerson}">
+    <label>PESEL</label>
+    <input th:type="number" th:field="*{PESEL}"/>
+    <button th:type="submit">Przeglądaj</button>
+    <br/>
+</form>
 </body>
 </html>
