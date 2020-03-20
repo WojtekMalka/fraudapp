@@ -50,20 +50,6 @@ public class SubjectsController {
         return "redirect:/subjectsManager";
     }
 
-    @GetMapping("/removePerson")
-    public ModelAndView getRemovePersonPage() {
-        ModelAndView mnv = new ModelAndView("removePerson");
-        mnv.addObject("removePerson", new RemovePersonForm());
-        return mnv;
-    }
-
-    @PostMapping("/removePerson")
-    @Transactional
-    public String removePerson(@ModelAttribute("removePerson") RemovePersonForm form) {
-        createService.deleteAllPersonsByPESEL(form.getPESEL());
-        return "redirect:/subjectsManager";
-    }
-
     @GetMapping("/removeCompany")
     public ModelAndView getRemoveCompanyPage() {
         ModelAndView mnv = new ModelAndView("removeCompany");
@@ -78,22 +64,10 @@ public class SubjectsController {
         return "redirect:/subjectsManager";
     }
 
-    @GetMapping("/viewPerson")
-    public ModelAndView getViewPersonPage() {
-        ModelAndView mnv = new ModelAndView("viewPerson");
-        mnv.addObject("viewPerson", new ViewPersonForm());
-        return mnv;
-    }
-
-    @PostMapping("/viewPerson")
-    public String viewPerson(@ModelAttribute("viewPerson") ViewPersonForm form) {
-        return "redirect:/subjectsManager/viewPerson/" + form.getPESEL();
-    }
-
-    @GetMapping("/viewPerson/{PESEL}")
-    public ModelAndView viewPersonEntities(@PathVariable int PESEL) {
+    @GetMapping("/viewPersonEntities")
+    public ModelAndView getViewPersonEntitiesPage() {
         ModelAndView mnv = new ModelAndView("viewPersonEntities");
-        mnv.addObject("viewPersonEntities", createService.findAllPersonsByPESEL(PESEL));
+        mnv.addObject("viewPersonEntities", createService.getAll());
         return mnv;
     }
 }

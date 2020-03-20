@@ -2,6 +2,7 @@ package pl.wojtekmalka.fraudapp.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import pl.wojtekmalka.fraudapp.dictionaries.FRAUD_STATUS;
 
 import javax.persistence.*;

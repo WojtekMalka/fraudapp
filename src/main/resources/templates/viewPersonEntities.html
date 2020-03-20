@@ -1,41 +1,52 @@
 <!DOCTYPE html>
-<html
-        xmlns:th="http://www.thymeleaf.org"
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorate="layout/layout"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout "
+<html xmlns:th="http://www.thymeleaf.org">
 
->
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>View Person</title>
 </head>
-<body>
+
+<body class="bg-dark text-light">
 <div class="mx-auto">
-    <h1><p class="text-center">Podgląd osoby fizycznej</p></h1>
+    <h1>
+        <p class="text-center">Podgląd osoby fizycznej</p>
+    </h1>
 </div>
-<table class="table">
+
+<table class="table" style="">
     <tbody>
+    </tbody>
     <thead>
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">fraudstatus</th>
+        <th scope="col" class="text-light">PersonId</th>
+        <th scope="col" class="text-light">First_name</th>
+        <th scope="col" class="text-light" style="">Last_name</th>
+        <th scope="col" class="text-light">Fraud_status</th>
+        <th scope="col" class="text-light">Opcje</th>
+        <th scope="col" class="text-light"></th>
     </tr>
     </thead>
+    <tbody>
     <th:block th:each="person : ${viewPersonEntities}">
         <tr>
-            <td th:text="${person.personId}"></td>
-            <td th:text="${person.firstName}"></td>
-            <td th:text="${person.lastName}"></td>
-            <td th:text="${person.fraudStatus}"></td>
-        </tr><br>
+            <td th:text="${person.personId}" class="text-light"></td>
+            <td th:text="${person.firstName}" class="text-light"></td>
+            <td th:text="${person.lastName}" class="text-light"></td>
+            <td th:text="${person.fraudStatus}" class="text-light"></td>
+            <td>
+                <a th:href="@{'/personEntity/' + ${person.personId} + '/remove'}"
+                   class="btn btn-sm btn-block btn-secondary btn-info" role="button" aria-pressed="true">Usuń</a></button>
+            </td>
+            <td>
+                <a th:href="@{'/personEntity/' + ${person.personId} + '/edit'}"
+                   class="btn btn-sm btn-block btn-secondary btn-info" role="button" aria-pressed="true">Edytuj</a></button>
+            </td>
+        </tr>
     </th:block>
     </tbody>
 </table>
 </body>
+
 </html>

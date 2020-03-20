@@ -1,38 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout/layout"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<html
+        xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <title>Create Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <title>Create Page</title>
 </head>
-<body>
-<div class="mx-auto">
-    <h2><p class="text-center font-weight-bold">Manager wpisów</p></h2>
-</div>
-    <div class="row">
-        <div class="col-4"><a th:href="@{'/subjectsManager/addPerson'}" class="btn btn-primary btn-lg btn-block" role="button"
-                              aria-pressed="true">Dodaj osobę</a></div>
-        <div class="col-4"><a th:href="@{'/subjectsManager/addCompany'}" class="btn btn-primary btn-lg btn-block" role="button"
-                              aria-pressed="true">Dodaj firmę</a></div>
-        <div class="col-4"><a th:href="@{'/'}" class="btn btn-primary btn-lg btn-block " role="button"
-                              aria-pressed="true">Wstecz</a></div>
-    </div>
-<div class="row">
-    <div class="col-4"><a th:href="@{'/subjectsManager/removePerson'}" class="btn btn-primary btn-lg btn-block" role="button"
-                          aria-pressed="true">Usuń osobę</a></div>
-    <div class="col-4"><a th:href="@{'/subjectsManager/removeCompany'}" class="btn btn-primary btn-lg btn-block" role="button"
-                          aria-pressed="true">Usuń firmę</a></div>
-</div>
-<div class="row">
-    <div class="col-4"><a th:href="@{'/subjectsManager/viewPerson'}" class="btn btn-primary btn-lg btn-block" role="button"
-                          aria-pressed="true">Podgląd osoby</a></div>
-    <div class="col-4"><a th:href="@{'/subjectsManager/viewCompany'}" class="btn btn-primary btn-lg btn-block" role="button"
-                          aria-pressed="true">Podgląd firmy</a></div>
-</div>
+
+<body class="bg-dark text-light">
+  <div class="mx-auto">
+    <h2 style="">
+      <p class="text-center font-weight-bold">Manager wpisów</p>
+    </h2>
+  </div>
+  <div class="row form-group">
+    <div class="col-4"><a th:href="@{'/subjectsManager/addPerson'}" class="btn btn-lg btn-block btn-secondary" role="button" aria-pressed="true">Dodaj osobę</a></div>
+    <div class="col-4"><a th:href="@{'/subjectsManager/addCompany'}" class="btn btn-lg btn-block btn-secondary" role="button" aria-pressed="true">Dodaj firmę</a></div>
+    <div class="col-4"><a th:href="@{'/'}" class="btn btn-lg btn-block btn-info" role="button" aria-pressed="true">Wstecz</a></div>
+  </div>
+  <div class="row form-group">
+    <div class="col-4"><a th:href="@{'/subjectsManager/viewPersonEntities'}" class="btn btn-lg btn-block btn-secondary" role="button" aria-pressed="true">Edytuj osobę</a></div>
+  </div>
 </body>
+
 </html>
