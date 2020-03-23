@@ -1,9 +1,10 @@
 package pl.wojtekmalka.fraudapp.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import pl.wojtekmalka.fraudapp.entities.Person;
+import pl.wojtekmalka.fraudapp.form.PersonForm;
 import pl.wojtekmalka.fraudapp.service.CreateService;
 
 import javax.transaction.Transactional;
@@ -24,5 +25,18 @@ public class PersonEntityController {
         return "redirect:/subjectsManager";
     }
 
+    @GetMapping("/{personId}/edit")
+    public ModelAndView getPersonEntityEditorPage(@PathVariable long personId) {
+        ModelAndView mnv = new ModelAndView("personEntityEditor");
+        Person personByPersonId = createService.findPersonByPersonId(personId);
+        mnv.addObject("personByPersonId", personByPersonId);
+        return mnv;
+    }
 
+    @PostMapping("/{personId}/edit")
+    @Transactional
+    public String editPersonEntity(@PathVariable long personId, @ModelAttribute("personByPersonId") PersonForm form) {
+        createService.updatePersonEntity(personId, form);
+        return "redirect:/subjectsManager";
+    }
 }

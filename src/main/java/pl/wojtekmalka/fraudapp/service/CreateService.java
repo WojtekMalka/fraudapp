@@ -4,7 +4,6 @@ import pl.wojtekmalka.fraudapp.entities.Person;
 import pl.wojtekmalka.fraudapp.form.CompanyForm;
 import pl.wojtekmalka.fraudapp.form.PersonForm;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface CreateService {
@@ -21,4 +20,8 @@ public interface CreateService {
     List<Person> findAllPersonsByPESEL(int PESEL);
 
     List<Person> getAll();
+
+    Person findPersonByPersonId(long personId);
+
+    void updatePersonEntity(long personId, PersonForm form);
 }

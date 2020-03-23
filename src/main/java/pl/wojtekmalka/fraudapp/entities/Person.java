@@ -2,6 +2,7 @@ package pl.wojtekmalka.fraudapp.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 import pl.wojtekmalka.fraudapp.dictionaries.FRAUD_STATUS;
 
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity(name = "Person")
 public class Person {

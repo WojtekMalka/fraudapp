@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="layout/layout"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout "
+
+>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<div class="container">
+    <h2><p>Edytuj osobę fizyczną</p></h2>
+    <form th:action="@{/personEntity/{personId}/edit}" method="post" th:object="${personByPersonId}">
+        <label>PESEL</label>
+        <input th:type="number" th:field="*{PESEL}"/>
+        <br/>
+        <label>First Name</label>
+        <input th:type="text" th:field="*{firstName}"/>
+        <br/>
+        <label>Last Name</label>
+        <input th:type="text" th:field="*{lastName}"/>
+        <br/>
+        <label>Fraud Status</label>
+        <select th:field="*{fraudStatus}">
+            <option th:value="'FRAUD'" th:text="FRAUD"></option>
+            <option th:value="'CLEAR'" th:text="CLEAR"></option>
+            <option th:value="'SUSPECT'" th:text="SUSPECT"></option>
+        </select>
+        <br/>
+        <h3><p>Adres</p></h3>
+        <label>Miasto</label>
+        <input th:type="text" th:field="*{address.city}"/>
+        <br/>
+        <label>Kod pocztowy</label>
+        <input th:type="number" th:field="*{address.postCode}"/>
+        <br/>
+        <label>Ulica</label>
+        <input th:type="text" th:field="*{address.street}"/>
+        <br/>
+        <label>Numer domu</label>
+        <input th:type="number" th:field="*{address.streetNumber}"/>
+        <br/>
+        <label>Numer mieszkania</label>
+        <input th:type="number" th:field="*{address.houseNumber}"/>
+        <br/>
+        <button th:type="submit">Dodaj</button>
+        <button><a th:href="@{'/subjectsManager'}">Wstecz</a></button>
+    </form>
+</div>
+</body>
+</div>
+</body>
+</html>

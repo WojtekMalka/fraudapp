@@ -8,7 +8,6 @@ import pl.wojtekmalka.fraudapp.form.PersonForm;
 import pl.wojtekmalka.fraudapp.repository.CompanyRepository;
 import pl.wojtekmalka.fraudapp.repository.PersonRepository;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -54,5 +53,21 @@ public class CreateServiceImpl implements CreateService {
     @Override
     public void deleteAllPersonsByPersonId(long personId) {
         personRepository.deleteAllByPersonId(personId);
+    }
+
+    @Override
+    public Person findPersonByPersonId(long personId) {
+        return personRepository.findPersonByPersonId(personId);
+    }
+
+    @Override
+    public void updatePersonEntity(long personId, PersonForm form) {
+        Person personByPersonId = findPersonByPersonId(personId);
+        personByPersonId.setFirstName(form.getFirstName());
+        personByPersonId.setLastName(form.getLastName());
+        personByPersonId.setAddress(form.getPersonAddress());
+        personByPersonId.setFraudStatus(form.getFraudStatus());
+        personByPersonId.setPESEL(form.getPESEL());
+        personRepository.save(personByPersonId);
     }
 }

@@ -50,19 +50,19 @@ public class SubjectsController {
         return "redirect:/subjectsManager";
     }
 
-    @GetMapping("/removeCompany")
-    public ModelAndView getRemoveCompanyPage() {
-        ModelAndView mnv = new ModelAndView("removeCompany");
-        mnv.addObject("removeCompany", new RemoveCompanyForm());
-        return mnv;
-    }
-
-    @PostMapping("/removeCompany")
-    @Transactional
-    public String removePerson(@ModelAttribute("removeCompany") RemoveCompanyForm form) {
-        createService.deleteAllCompanyByNIP(form.getNIP());
-        return "redirect:/subjectsManager";
-    }
+//    @GetMapping("/removeCompany")
+//    public ModelAndView getRemoveCompanyPage() {
+//        ModelAndView mnv = new ModelAndView("removeCompany");
+//        mnv.addObject("removeCompany", new RemoveCompanyForm());
+//        return mnv;
+//    }
+//
+//    @PostMapping("/removeCompany")
+//    @Transactional
+//    public String removePerson(@ModelAttribute("removeCompany") RemoveCompanyForm form) {
+//        createService.deleteAllCompanyByNIP(form.getNIP());
+//        return "redirect:/subjectsManager";
+//    }
 
     @GetMapping("/viewPersonEntities")
     public ModelAndView getViewPersonEntitiesPage() {
