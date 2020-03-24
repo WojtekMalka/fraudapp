@@ -15,7 +15,7 @@
 <body>
 <div class="container">
     <h2><p>Edytuj osobę fizyczną</p></h2>
-    <form th:action="@{/personEntity/{personId}/edit}" method="post" th:object="${personByPersonId}">
+    <form th:action="@{/personEntity/{personId}/edit/edited}" method="post" th:object="${personByPersonId}">
         <label>PESEL</label>
         <input th:type="number" th:field="*{PESEL}"/>
         <br/>
