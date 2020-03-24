@@ -33,7 +33,8 @@ public class PersonEntityController {
         personFormWithEntityData.setLastName(personByPersonId.getLastName());
         personFormWithEntityData.setFraudStatus(personByPersonId.getFraudStatus());
         personFormWithEntityData.setPESEL(personByPersonId.getPESEL());
-        mnv.addObject("personByPersonId", personFormWithEntityData);
+        personFormWithEntityData.setPersonID(personByPersonId.getPersonId());
+        mnv.addObject("personFormWithEntityData", personFormWithEntityData);
         return mnv;
     }
 

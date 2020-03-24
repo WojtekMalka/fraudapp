@@ -21,7 +21,7 @@
 </div>
 <div class="container">
 
-    <form th:action="@{'/edit/' + ${personByPersonId.getPersonID()}}" method="post" th:object="${personByPersonId}">
+    <form th:action="@{'/personEntity/edit/' + ${personFormWithEntityData.getPersonID()}}" method="post" th:object="${personFormWithEntityData}">
         <label>PESEL</label>
         <input th:type="number" th:field="*{PESEL}"/>
         <br/>
@@ -54,7 +54,7 @@
         <label>Numer mieszkania</label>
         <input th:type="number" th:field="*{personAddress.houseNumber}"/>
         <br/>
-        <button th:type="submit" class="btn-lg btn-block btn-secondary" role="button" aria-pressed="true">Edytuj</button>
+        <button th:type="submit" class="btn-lg btn-block btn-secondary" role="button" aria-pressed="true">Zapisz zmiany</button>
         <a th:href="@{'/subjectsManager/viewPersonEntities'}" class="btn btn-lg btn-block btn-info" role="button" aria-pressed="true">Wstecz</a>
     </form>
 </div>
