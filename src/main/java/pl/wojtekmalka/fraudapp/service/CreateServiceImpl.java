@@ -8,9 +8,11 @@ import pl.wojtekmalka.fraudapp.form.PersonForm;
 import pl.wojtekmalka.fraudapp.repository.CompanyRepository;
 import pl.wojtekmalka.fraudapp.repository.PersonRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class CreateServiceImpl implements CreateService {
     private final PersonRepository personRepository;
     private final CompanyRepository companyRepository;

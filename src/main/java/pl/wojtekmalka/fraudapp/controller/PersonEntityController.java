@@ -18,25 +18,35 @@ public class PersonEntityController {
         this.createService = createService;
     }
 
-    @GetMapping("/{personId}/remove")
-    @Transactional
-    public String removePerson(@PathVariable long personId) {
-        createService.deleteAllPersonsByPersonId(personId);
+    @GetMapping("/remove/{id}")
+    public String removePerson(@PathVariable long id) {
+        createService.deleteAllPersonsByPersonId(id);
         return "redirect:/subjectsManager";
     }
 
-    @GetMapping("/{personId}/edit")
-    public ModelAndView getPersonEntityEditorPage(@PathVariable long personId) {
+//    @GetMapping("/remove")
+//    @Transactional
+//    public String removePerson(@PathVariable long personId) {
+//        createService.deleteAllPersonsByPersonId(personId);
+//        return "redirect:/subjectsManager";
+//    }
+
+    @GetMapping("/edit/{id}")
+    public ModelAndView getPersonEntityEditorPage(@PathVariable long id) {
         ModelAndView mnv = new ModelAndView("personEntityEditor");
-        Person personByPersonId = createService.findPersonByPersonId(personId);
-        mnv.addObject("personByPersonId", personByPersonId);
+        Person personByPersonId = createService.findPersonByPersonId(id);
+        PersonForm personFormWithEntityData = new PersonForm();
+        personFormWithEntityData.setFirstName(personByPersonId.getFirstName());
+        personFormWithEntityData.setLastName(personByPersonId.getLastName());
+        personFormWithEntityData.setFraudStatus(personByPersonId.getFraudStatus());
+        personFormWithEntityData.setPESEL(personByPersonId.getPESEL());
+        mnv.addObject("personByPersonId", personFormWithEntityData);
         return mnv;
     }
 
-    @PostMapping("/{personId}/edit")
-    @Transactional
-    public String editPersonEntity(@PathVariable long personId, @ModelAttribute("personByPersonId") PersonForm form) {
-        createService.updatePersonEntity(personId, form);
+    @PostMapping("/edit/{id}")
+    public String editPersonEntity(@PathVariable("id") long id, @ModelAttribute("personByPersonId") PersonForm form) {
+        createService.updatePersonEntity(id, form);
         return "redirect:/subjectsManager";
     }
 }

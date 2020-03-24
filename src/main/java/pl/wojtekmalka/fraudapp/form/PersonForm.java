@@ -8,6 +8,7 @@ import pl.wojtekmalka.fraudapp.entities.Address;
 @Getter
 @Setter
 public class PersonForm {
+    private long personID;
     private int PESEL;
     private String firstName;
     private String lastName;

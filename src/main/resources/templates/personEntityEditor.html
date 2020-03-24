@@ -15,7 +15,7 @@
 <body>
 <div class="container">
     <h2><p>Edytuj osobę fizyczną</p></h2>
-    <form th:action="@{/personEntity/{personId}/edit/edited}" method="post" th:object="${personByPersonId}">
+    <form th:action="@{'/edit/' + ${personByPersonId.getPersonID()}}" method="post" th:object="${personByPersonId}">
         <label>PESEL</label>
         <input th:type="number" th:field="*{PESEL}"/>
         <br/>
@@ -34,22 +34,22 @@
         <br/>
         <h3><p>Adres</p></h3>
         <label>Miasto</label>
-        <input th:type="text" th:field="*{address.city}"/>
+        <input th:type="text" th:field="*{personAddress.city}"/>
         <br/>
         <label>Kod pocztowy</label>
-        <input th:type="number" th:field="*{address.postCode}"/>
+        <input th:type="number" th:field="*{personAddress.postCode}"/>
         <br/>
         <label>Ulica</label>
-        <input th:type="text" th:field="*{address.street}"/>
+        <input th:type="text" th:field="*{personAddress.street}"/>
         <br/>
         <label>Numer domu</label>
-        <input th:type="number" th:field="*{address.streetNumber}"/>
+        <input th:type="number" th:field="*{personAddress.streetNumber}"/>
         <br/>
         <label>Numer mieszkania</label>
-        <input th:type="number" th:field="*{address.houseNumber}"/>
+        <input th:type="number" th:field="*{personAddress.houseNumber}"/>
         <br/>
-        <button th:type="submit">Dodaj</button>
-        <button><a th:href="@{'/subjectsManager'}">Wstecz</a></button>
+        <button th:type="submit">Edytuj</button>
+        <button><a th:href="@{'/subjectsManager/viewPersonEntities'}">Wstecz</a></button>
     </form>
 </div>
 </body>
