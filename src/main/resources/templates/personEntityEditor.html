@@ -8,13 +8,19 @@
 
 >
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Home Page</title>
 </head>
-<body>
+<body class="bg-dark text-light">
+<div class="mx-auto">
+    <h2 style="">
+        <p class="text-center font-weight-bold">Edytuj osobę fizyczną</p>
+    </h2>
+</div>
 <div class="container">
-    <h2><p>Edytuj osobę fizyczną</p></h2>
+
     <form th:action="@{'/edit/' + ${personByPersonId.getPersonID()}}" method="post" th:object="${personByPersonId}">
         <label>PESEL</label>
         <input th:type="number" th:field="*{PESEL}"/>
@@ -48,8 +54,8 @@
         <label>Numer mieszkania</label>
         <input th:type="number" th:field="*{personAddress.houseNumber}"/>
         <br/>
-        <button th:type="submit">Edytuj</button>
-        <button><a th:href="@{'/subjectsManager/viewPersonEntities'}">Wstecz</a></button>
+        <button th:type="submit" class="btn-lg btn-block btn-secondary" role="button" aria-pressed="true">Edytuj</button>
+        <a th:href="@{'/subjectsManager/viewPersonEntities'}" class="btn btn-lg btn-block btn-info" role="button" aria-pressed="true">Wstecz</a>
     </form>
 </div>
 </body>

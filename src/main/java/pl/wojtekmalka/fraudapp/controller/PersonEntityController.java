@@ -24,13 +24,6 @@ public class PersonEntityController {
         return "redirect:/subjectsManager";
     }
 
-//    @GetMapping("/remove")
-//    @Transactional
-//    public String removePerson(@PathVariable long personId) {
-//        createService.deleteAllPersonsByPersonId(personId);
-//        return "redirect:/subjectsManager";
-//    }
-
     @GetMapping("/edit/{id}")
     public ModelAndView getPersonEntityEditorPage(@PathVariable long id) {
         ModelAndView mnv = new ModelAndView("personEntityEditor");
@@ -45,7 +38,7 @@ public class PersonEntityController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editPersonEntity(@PathVariable("id") long id, @ModelAttribute("personByPersonId") PersonForm form) {
+    public String editPersonEntity(@PathVariable("id") long id, @ModelAttribute("personFormWithEntityData") PersonForm form) {
         createService.updatePersonEntity(id, form);
         return "redirect:/subjectsManager";
     }
