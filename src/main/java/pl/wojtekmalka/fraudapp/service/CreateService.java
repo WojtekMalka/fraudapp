@@ -12,15 +12,15 @@ public interface CreateService {
 
     void addCompany(CompanyForm form);
 
-    void deleteAllPersonsByPESEL(int PESEL);
+//    void deleteAllPersonsByPESEL(int PESEL);
 
     void deleteAllPersonsByPersonId(long personId);
 
     void deleteAllCompaniesByCompanyId(long companyId);
 
-    void deleteAllCompanyByNIP(int NIP);
-
-    List<Person> findAllPersonsByPESEL(int PESEL);
+//    void deleteAllCompanyByNIP(int NIP);
+//
+//    List<Person> findAllPersonsByPESEL(int PESEL);
 
     List<Company> getAllCompanies();
 
@@ -28,5 +28,9 @@ public interface CreateService {
 
     Person findPersonByPersonId(long personId);
 
+    Company findCompanyByCompanyId(long companyId);
+
     void updatePersonEntity(long personId, PersonForm form);
+
+    void updateCompanyEntity(long companyId, CompanyForm form);
 }

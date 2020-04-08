@@ -29,11 +29,11 @@ public class PersonEntityController {
         ModelAndView mnv = new ModelAndView("personEntityEditor");
         Person personByPersonId = createService.findPersonByPersonId(id);
         PersonForm personFormWithEntityData = new PersonForm();
+        personFormWithEntityData.setPersonID(personByPersonId.getPersonId());
         personFormWithEntityData.setFirstName(personByPersonId.getFirstName());
         personFormWithEntityData.setLastName(personByPersonId.getLastName());
         personFormWithEntityData.setFraudStatus(personByPersonId.getFraudStatus());
         personFormWithEntityData.setPESEL(personByPersonId.getPESEL());
-        personFormWithEntityData.setPersonID(personByPersonId.getPersonId());
         personFormWithEntityData.setPersonAddress(personByPersonId.getAddress());
         mnv.addObject("personFormWithEntityData", personFormWithEntityData);
         return mnv;

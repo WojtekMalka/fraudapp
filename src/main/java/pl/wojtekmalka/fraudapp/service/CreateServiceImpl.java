@@ -33,20 +33,20 @@ public class CreateServiceImpl implements CreateService {
         companyRepository.save(new Company(form.getNIP(), form.getCompanyName(), form.getFraudStatus(), form.getCompanyAddress()));
     }
 
-    @Override
-    public void deleteAllPersonsByPESEL(int PESEL) {
-        personRepository.deleteAllByPESEL(PESEL);
-    }
-
-    @Override
-    public void deleteAllCompanyByNIP(int NIP) {
-        companyRepository.deleteAllByNIP(NIP);
-    }
-
-    @Override
-    public List<Person> findAllPersonsByPESEL(int PESEL) {
-        return personRepository.findAllByPESEL(PESEL);
-    }
+//    @Override
+//    public void deleteAllPersonsByPESEL(int PESEL) {
+//        personRepository.deleteAllByPESEL(PESEL);
+//    }
+//
+//    @Override
+//    public void deleteAllCompanyByNIP(int NIP) {
+//        companyRepository.deleteAllByNIP(NIP);
+//    }
+//
+//    @Override
+//    public List<Person> findAllPersonsByPESEL(int PESEL) {
+//        return personRepository.findAllByPESEL(PESEL);
+//    }
 
     @Override
     public List<Company> getAllCompanies() {
@@ -74,19 +74,40 @@ public class CreateServiceImpl implements CreateService {
     }
 
     @Override
+    public Company findCompanyByCompanyId(long companyId) {
+        return companyRepository.findCompanyByCompanyId(companyId);
+    }
+
+    @Override
     public void updatePersonEntity(long personId, PersonForm form) {
         Person personByPersonId = findPersonByPersonId(personId);
-        Address address = new Address(personByPersonId.getAddress().getAddressId(),
-                form.getPersonAddress().getCity(),
-                form.getPersonAddress().getStreet(),
-                form.getPersonAddress().getStreetNumber(),
-                form.getPersonAddress().getHouseNumber(),
-                form.getPersonAddress().getPostCode());
         personByPersonId.setFirstName(form.getFirstName());
         personByPersonId.setLastName(form.getLastName());
-        personByPersonId.setAddress(address);
         personByPersonId.setFraudStatus(form.getFraudStatus());
         personByPersonId.setPESEL(form.getPESEL());
+        personByPersonId.setAddress(
+                new Address(personByPersonId.getAddress().getAddressId(),
+                        form.getPersonAddress().getCity(),
+                        form.getPersonAddress().getStreet(),
+                        form.getPersonAddress().getStreetNumber(),
+                        form.getPersonAddress().getHouseNumber(),
+                        form.getPersonAddress().getPostCode()));
         personRepository.save(personByPersonId);
+    }
+
+    @Override
+    public void updateCompanyEntity(long companyId, CompanyForm form) {
+        Company companyByCompanyId = findCompanyByCompanyId(companyId);
+        companyByCompanyId.setNIP(form.getNIP());
+        companyByCompanyId.setCompanyName(form.getCompanyName());
+        companyByCompanyId.setFraudStatus(form.getFraudStatus());
+        companyByCompanyId.setAddress(
+                new Address(companyByCompanyId.getAddress().getAddressId(),
+                        form.getCompanyAddress().getCity(),
+                        form.getCompanyAddress().getStreet(),
+                        form.getCompanyAddress().getStreetNumber(),
+                        form.getCompanyAddress().getHouseNumber(),
+                        form.getCompanyAddress().getPostCode()));
+        companyRepository.save(companyByCompanyId);
     }
 }

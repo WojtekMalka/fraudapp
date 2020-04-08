@@ -3,8 +3,8 @@ package pl.wojtekmalka.fraudapp.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import pl.wojtekmalka.fraudapp.entities.Person;
-import pl.wojtekmalka.fraudapp.form.PersonForm;
+import pl.wojtekmalka.fraudapp.entities.Company;
+import pl.wojtekmalka.fraudapp.form.CompanyForm;
 import pl.wojtekmalka.fraudapp.service.CreateService;
 
 @Controller
@@ -23,23 +23,22 @@ public class CompanyEntityController {
     }
 
     @GetMapping("/edit/{id}")
-    public ModelAndView getPersonEntityEditorPage(@PathVariable long id) {
-        ModelAndView mnv = new ModelAndView("personEntityEditor");
-        Person personByPersonId = createService.findPersonByPersonId(id);
-        PersonForm personFormWithEntityData = new PersonForm();
-        personFormWithEntityData.setFirstName(personByPersonId.getFirstName());
-        personFormWithEntityData.setLastName(personByPersonId.getLastName());
-        personFormWithEntityData.setFraudStatus(personByPersonId.getFraudStatus());
-        personFormWithEntityData.setPESEL(personByPersonId.getPESEL());
-        personFormWithEntityData.setPersonID(personByPersonId.getPersonId());
-        personFormWithEntityData.setPersonAddress(personByPersonId.getAddress());
-        mnv.addObject("personFormWithEntityData", personFormWithEntityData);
+    public ModelAndView getCompanyEntityEditorPage(@PathVariable long id) {
+        ModelAndView mnv = new ModelAndView("companyEntityEditor");
+        Company companyByCompanyId = createService.findCompanyByCompanyId(id);
+        CompanyForm companyFormWithEntityData = new CompanyForm();
+        companyFormWithEntityData.setCompanyID(companyByCompanyId.getCompanyId());
+        companyFormWithEntityData.setNIP(companyByCompanyId.getNIP());
+        companyFormWithEntityData.setCompanyName(companyByCompanyId.getCompanyName());
+        companyFormWithEntityData.setFraudStatus(companyByCompanyId.getFraudStatus());
+        companyFormWithEntityData.setCompanyAddress(companyByCompanyId.getAddress());
+        mnv.addObject("companyFormWithEntityData", companyFormWithEntityData);
         return mnv;
     }
 
     @PostMapping("/edit/{id}")
-    public String editPersonEntity(@PathVariable("id") long id, @ModelAttribute("personFormWithEntityData") PersonForm form) {
-        createService.updatePersonEntity(id, form);
+    public String editCompanyEntity(@PathVariable("id") long id, @ModelAttribute("companyFormWithEntityData") CompanyForm form) {
+        createService.updateCompanyEntity(id, form);
         return "redirect:/subjectsManager";
     }
 }

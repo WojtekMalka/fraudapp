@@ -16,20 +16,17 @@
 <body class="bg-dark text-light">
 <div class="mx-auto">
     <h2 style="">
-        <p class="text-center font-weight-bold">Edytuj osobę fizyczną</p>
+        <p class="text-center font-weight-bold">Edytuj przedsiębiorstwo</p>
     </h2>
 </div>
 <div class="container">
 
-    <form th:action="@{'/personEntity/edit/' + ${personFormWithEntityData.getPersonID()}}" method="post" th:object="${personFormWithEntityData}">
-        <label>PESEL</label>
-        <input th:type="number" th:field="*{PESEL}"/>
+    <form th:action="@{'/companyEntity/edit/' + ${companyFormWithEntityData.getCompanyID()}}" method="post" th:object="${companyFormWithEntityData}">
+        <label>NIP</label>
+        <input th:type="number" th:field="*{NIP}"/>
         <br/>
-        <label>First Name</label>
-        <input th:type="text" th:field="*{firstName}"/>
-        <br/>
-        <label>Last Name</label>
-        <input th:type="text" th:field="*{lastName}"/>
+        <label>Company name</label>
+        <input th:type="text" th:field="*{companyName}"/>
         <br/>
         <label>Fraud Status</label>
         <select th:field="*{fraudStatus}">
@@ -40,22 +37,22 @@
         <br/>
         <h3><p>Adres</p></h3>
         <label>Miasto</label>
-        <input th:type="text" th:field="*{personAddress.city}"/>
+        <input th:type="text" th:field="*{companyAddress.city}"/>
         <br/>
         <label>Kod pocztowy</label>
-        <input th:type="number" th:field="*{personAddress.postCode}"/>
+        <input th:type="number" th:field="*{companyAddress.postCode}"/>
         <br/>
         <label>Ulica</label>
-        <input th:type="text" th:field="*{personAddress.street}"/>
+        <input th:type="text" th:field="*{companyAddress.street}"/>
         <br/>
         <label>Numer domu</label>
-        <input th:type="number" th:field="*{personAddress.streetNumber}"/>
+        <input th:type="number" th:field="*{companyAddress.streetNumber}"/>
         <br/>
         <label>Numer mieszkania</label>
-        <input th:type="number" th:field="*{personAddress.houseNumber}"/>
+        <input th:type="number" th:field="*{companyAddress.houseNumber}"/>
         <br/>
         <button th:type="submit" class="btn-lg btn-block btn-secondary" role="button" aria-pressed="true">Zapisz zmiany</button>
-        <a th:href="@{'/subjectsManager/viewPersonEntities'}" class="btn btn-lg btn-block btn-info" role="button" aria-pressed="true">Wstecz</a>
+        <a th:href="@{'/subjectsManager/viewCompanyEntities'}" class="btn btn-lg btn-block btn-info" role="button" aria-pressed="true">Wstecz</a>
     </form>
 </div>
 </body>

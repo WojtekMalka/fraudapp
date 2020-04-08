@@ -8,6 +8,7 @@ import pl.wojtekmalka.fraudapp.entities.Address;
 @Getter
 @Setter
 public class CompanyForm {
+    private long companyID;
     private int NIP;
     private String companyName;
     private FRAUD_STATUS fraudStatus;
