@@ -23,6 +23,7 @@
     <form th:action="@{/subjectsManager/addPerson}" method="post" th:object="${addPerson}">
         <label>PESEL</label>
         <input th:type="number" th:field="*{PESEL}"/>
+        <div th:if="${#fields.hasErrors('PESEL')}" th:errors="*{PESEL}">PESEL Error</div>
         <br/>
         <label>First Name</label>
         <input th:type="text" th:field="*{firstName}"/>

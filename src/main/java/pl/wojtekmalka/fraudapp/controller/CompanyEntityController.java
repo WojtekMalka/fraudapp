@@ -7,20 +7,18 @@ import pl.wojtekmalka.fraudapp.entities.Person;
 import pl.wojtekmalka.fraudapp.form.PersonForm;
 import pl.wojtekmalka.fraudapp.service.CreateService;
 
-import javax.transaction.Transactional;
-
 @Controller
-@RequestMapping("/personEntity")
-public class PersonEntityController {
+@RequestMapping("/companyEntity")
+public class CompanyEntityController {
     private final CreateService createService;
 
-    public PersonEntityController(CreateService createService) {
+    public CompanyEntityController(CreateService createService) {
         this.createService = createService;
     }
 
     @GetMapping("/remove/{id}")
-    public String removePerson(@PathVariable long id) {
-        createService.deleteAllPersonsByPersonId(id);
+    public String removeCompany(@PathVariable long id) {
+        createService.deleteAllCompaniesByCompanyId(id);
         return "redirect:/subjectsManager";
     }
 

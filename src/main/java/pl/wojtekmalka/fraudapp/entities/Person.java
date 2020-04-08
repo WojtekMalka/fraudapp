@@ -7,6 +7,10 @@ import lombok.ToString;
 import pl.wojtekmalka.fraudapp.dictionaries.FRAUD_STATUS;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,6 +24,8 @@ public class Person {
     private long personId;
     private LocalDate createDate = LocalDate.now();
     @Column(unique = true, nullable = false)
+    @NotNull
+    @Digits(integer = 11, fraction = 0)
     private int PESEL;
     private String firstName;
     private String lastName;

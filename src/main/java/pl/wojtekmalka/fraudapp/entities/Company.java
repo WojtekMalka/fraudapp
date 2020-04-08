@@ -2,11 +2,13 @@ package pl.wojtekmalka.fraudapp.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pl.wojtekmalka.fraudapp.dictionaries.FRAUD_STATUS;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@Setter
 @Getter
 @NoArgsConstructor
 @Entity(name = "Company")
@@ -19,7 +21,7 @@ public class Company {
     private String companyName;
     @Enumerated(EnumType.STRING)
     private FRAUD_STATUS fraudStatus;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Address address;
 
     public Company(int NIP, String companyName, FRAUD_STATUS fraudStatus, Address address) {

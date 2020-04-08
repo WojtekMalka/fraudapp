@@ -1,6 +1,7 @@
 package pl.wojtekmalka.fraudapp.service;
 
 import org.springframework.stereotype.Service;
+import pl.wojtekmalka.fraudapp.entities.Address;
 import pl.wojtekmalka.fraudapp.entities.Company;
 import pl.wojtekmalka.fraudapp.entities.Person;
 import pl.wojtekmalka.fraudapp.form.CompanyForm;
@@ -48,13 +49,23 @@ public class CreateServiceImpl implements CreateService {
     }
 
     @Override
-    public List<Person> getAll() {
+    public List<Company> getAllCompanies() {
+        return companyRepository.findAll();
+    }
+
+    @Override
+    public List<Person> getAllPersons() {
         return personRepository.findAll();
     }
 
     @Override
     public void deleteAllPersonsByPersonId(long personId) {
         personRepository.deleteAllByPersonId(personId);
+    }
+
+    @Override
+    public void deleteAllCompaniesByCompanyId(long companyId) {
+        companyRepository.deleteAllByCompanyId(companyId);
     }
 
     @Override
@@ -65,9 +76,15 @@ public class CreateServiceImpl implements CreateService {
     @Override
     public void updatePersonEntity(long personId, PersonForm form) {
         Person personByPersonId = findPersonByPersonId(personId);
+        Address address = new Address(personByPersonId.getAddress().getAddressId(),
+                form.getPersonAddress().getCity(),
+                form.getPersonAddress().getStreet(),
+                form.getPersonAddress().getStreetNumber(),
+                form.getPersonAddress().getHouseNumber(),
+                form.getPersonAddress().getPostCode());
         personByPersonId.setFirstName(form.getFirstName());
         personByPersonId.setLastName(form.getLastName());
-        personByPersonId.setAddress(form.getPersonAddress());
+        personByPersonId.setAddress(address);
         personByPersonId.setFraudStatus(form.getFraudStatus());
         personByPersonId.setPESEL(form.getPESEL());
         personRepository.save(personByPersonId);

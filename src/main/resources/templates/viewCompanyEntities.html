@@ -11,12 +11,13 @@
 <body class="bg-dark text-light">
 <div class="mx-auto">
     <h1>
-        <p class="text-center">Podgląd osoby fizycznej</p>
+        <p class="text-center">Podgląd przedsiębiorstwa</p>
     </h1>
 </div>
 
 <div class="container">
-    <a th:href="@{'/subjectsManager'}" class="btn btn-lg btn-block btn-info" role="button" aria-pressed="true">Wstecz</a>
+    <a th:href="@{'/subjectsManager'}" class="btn btn-lg btn-block btn-info" role="button"
+       aria-pressed="true">Wstecz</a>
 </div>
 
 <table class="table" style="">
@@ -24,28 +25,26 @@
     </tbody>
     <thead>
     <tr>
-        <th scope="col" class="text-light">PersonId</th>
-        <th scope="col" class="text-light">First_name</th>
-        <th scope="col" class="text-light" style="">Last_name</th>
+        <th scope="col" class="text-light">NIP</th>
+        <th scope="col" class="text-light">Company_name</th>
         <th scope="col" class="text-light">Fraud_status</th>
         <th scope="col" class="text-light">Opcje</th>
         <th scope="col" class="text-light"></th>
     </tr>
     </thead>
     <tbody>
-    <th:block th:each="person : ${viewPersonEntities}">
+    <th:block th:each="company : ${viewCompanyEntities}">
         <tr>
-            <td th:text="${person.personId}" class="text-light"></td>
-            <td th:text="${person.firstName}" class="text-light"></td>
-            <td th:text="${person.lastName}" class="text-light"></td>
-            <td th:text="${person.fraudStatus}" class="text-light"></td>
+            <td th:text="${company.NIP}" class="text-light"></td>
+            <td th:text="${company.companyName}" class="text-light"></td>
+            <td th:text="${company.fraudStatus}" class="text-light"></td>
             <td>
-                <a th:href="@{'/personEntity/remove/' + ${person.personId}}"
+                <a th:href="@{'/companyEntity/remove/' + ${company.companyId}}"
                    class="btn btn-sm btn-block btn-secondary btn-info" role="button"
                    aria-pressed="true">Usuń</a></button>
             </td>
             <td>
-                <a th:href="@{'/personEntity/edit/' + ${person.personId}}"
+                <a th:href="@{'/companyEntity/edit/' + ${company.companyId}}"
                    class="btn btn-sm btn-block btn-secondary btn-info" role="button"
                    aria-pressed="true">Edytuj</a></button>
             </td>

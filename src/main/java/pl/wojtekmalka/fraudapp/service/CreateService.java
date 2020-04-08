@@ -1,5 +1,6 @@
 package pl.wojtekmalka.fraudapp.service;
 
+import pl.wojtekmalka.fraudapp.entities.Company;
 import pl.wojtekmalka.fraudapp.entities.Person;
 import pl.wojtekmalka.fraudapp.form.CompanyForm;
 import pl.wojtekmalka.fraudapp.form.PersonForm;
@@ -15,11 +16,15 @@ public interface CreateService {
 
     void deleteAllPersonsByPersonId(long personId);
 
+    void deleteAllCompaniesByCompanyId(long companyId);
+
     void deleteAllCompanyByNIP(int NIP);
 
     List<Person> findAllPersonsByPESEL(int PESEL);
 
-    List<Person> getAll();
+    List<Company> getAllCompanies();
+
+    List<Person> getAllPersons();
 
     Person findPersonByPersonId(long personId);
 

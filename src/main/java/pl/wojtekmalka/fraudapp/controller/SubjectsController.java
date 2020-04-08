@@ -1,12 +1,16 @@
 package pl.wojtekmalka.fraudapp.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import pl.wojtekmalka.fraudapp.form.*;
+import pl.wojtekmalka.fraudapp.form.CompanyForm;
+import pl.wojtekmalka.fraudapp.form.PersonForm;
 import pl.wojtekmalka.fraudapp.service.CreateService;
-
-import javax.transaction.Transactional;
 
 @Controller
 @RequestMapping("/subjectsManager")
@@ -32,7 +36,10 @@ public class SubjectsController {
     }
 
     @PostMapping("/addPerson")
-    public String addPerson(@ModelAttribute("addPerson") PersonForm form) {
+    public String addPerson(@ModelAttribute("addPerson") @Validated PersonForm form, Errors errors) {
+        if (errors.hasErrors()) {
+            return "/addPerson";
+        } else
         createService.addPerson(form);
         return "redirect:/";
     }
@@ -45,7 +52,10 @@ public class SubjectsController {
     }
 
     @PostMapping("/addCompany")
-    public String addCompany(@ModelAttribute("addCompany") CompanyForm form) {
+    public String addCompany(@ModelAttribute("addCompany") @Validated CompanyForm form, Errors errors) {
+        if(errors.hasErrors()){
+            return "/addCompany";
+        } else
         createService.addCompany(form);
         return "redirect:/subjectsManager";
     }
@@ -53,7 +63,14 @@ public class SubjectsController {
     @GetMapping("/viewPersonEntities")
     public ModelAndView getViewPersonEntitiesPage() {
         ModelAndView mnv = new ModelAndView("viewPersonEntities");
-        mnv.addObject("viewPersonEntities", createService.getAll());
+        mnv.addObject("viewPersonEntities", createService.getAllPersons());
+        return mnv;
+    }
+
+    @GetMapping("/viewCompanyEntities")
+    public ModelAndView getViewCompanyEntitiesPage() {
+        ModelAndView mnv = new ModelAndView("viewCompanyEntities");
+        mnv.addObject("viewCompanyEntities", createService.getAllCompanies());
         return mnv;
     }
 }

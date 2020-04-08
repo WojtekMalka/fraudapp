@@ -5,4 +5,6 @@ import pl.wojtekmalka.fraudapp.entities.Company;
 
 public interface CompanyRepository extends JpaRepository<Company, Long> {
     void deleteAllByNIP(int NIP);
+
+    void deleteAllByCompanyId(long companyId);
 }

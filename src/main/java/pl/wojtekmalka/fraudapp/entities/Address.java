@@ -1,5 +1,6 @@
 package pl.wojtekmalka.fraudapp.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +24,4 @@ public class Address {
     private int streetNumber;
     private int houseNumber;
     private int postCode;
-
-
 }
