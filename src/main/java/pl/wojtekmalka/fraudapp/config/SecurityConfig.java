@@ -1,11 +1,8 @@
 /*
-
+package pl.wojtekmalka.fraudapp.config;
 
 //TODO
-Aby uruchomić security należy odkomentować dependency w POM
-
-
-package pl.wojtekmalka.fraudapp.config;
+//Aby uruchomić security należy odkomentować dependency w POM
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,7 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableWebSecurity
+@EnableWebSecurity|
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

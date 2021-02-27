@@ -33,21 +33,6 @@ public class CreateServiceImpl implements CreateService {
         companyRepository.save(new Company(form.getNIP(), form.getCompanyName(), form.getFraudStatus(), form.getCompanyAddress()));
     }
 
-//    @Override
-//    public void deleteAllPersonsByPESEL(int PESEL) {
-//        personRepository.deleteAllByPESEL(PESEL);
-//    }
-//
-//    @Override
-//    public void deleteAllCompanyByNIP(int NIP) {
-//        companyRepository.deleteAllByNIP(NIP);
-//    }
-//
-//    @Override
-//    public List<Person> findAllPersonsByPESEL(int PESEL) {
-//        return personRepository.findAllByPESEL(PESEL);
-//    }
-
     @Override
     public List<Company> getAllCompanies() {
         return companyRepository.findAll();

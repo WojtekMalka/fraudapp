@@ -1,58 +1,88 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <title>View Person</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <title>View Person</title>
 </head>
 
 <body class="bg-dark text-light">
-<div class="mx-auto">
+  <div class="mx-auto">
     <h1>
-        <p class="text-center">Podgląd osoby fizycznej</p>
+      <p class="text-center">Podgląd osoby fizycznej</p>
     </h1>
-</div>
-
-<div class="container">
+  </div>
+  <div class="container">
     <a th:href="@{'/subjectsManager'}" class="btn btn-lg btn-block btn-info" role="button" aria-pressed="true">Wstecz</a>
-</div>
-
-<table class="table" style="">
+  </div>
+  <th:block th:each="person : ${viewPersonEntities}">
+  </th:block>
+  <table class="table" style="">
     <tbody>
     </tbody>
     <thead>
-    <tr>
+      <tr>
         <th scope="col" class="text-light">PersonId</th>
         <th scope="col" class="text-light">First_name</th>
         <th scope="col" class="text-light" style="">Last_name</th>
         <th scope="col" class="text-light">Fraud_status</th>
         <th scope="col" class="text-light">Opcje</th>
         <th scope="col" class="text-light"></th>
-    </tr>
+      </tr>
     </thead>
     <tbody>
-    <th:block th:each="person : ${viewPersonEntities}">
-        <tr>
-            <td th:text="${person.personId}" class="text-light"></td>
-            <td th:text="${person.firstName}" class="text-light"></td>
-            <td th:text="${person.lastName}" class="text-light"></td>
-            <td th:text="${person.fraudStatus}" class="text-light"></td>
-            <td>
-                <a th:href="@{'/personEntity/remove/' + ${person.personId}}"
-                   class="btn btn-sm btn-block btn-secondary btn-info" role="button"
-                   aria-pressed="true">Usuń</a></button>
-            </td>
-            <td>
-                <a th:href="@{'/personEntity/edit/' + ${person.personId}}"
-                   class="btn btn-sm btn-block btn-secondary btn-info" role="button"
-                   aria-pressed="true">Edytuj</a></button>
-            </td>
-        </tr>
-    </th:block>
+      <tr>
+        <td th:text="${person.personId}" class="text-light"></td>
+        <td th:text="${person.firstName}" class="text-light"></td>
+        <td th:text="${person.lastName}" class="text-light"></td>
+        <td th:text="${person.fraudStatus}" class="text-light"></td>
+        <td>
+          <a th:href="@{'/personEntity/remove/' + ${person.personId}}" class="btn btn-sm btn-block btn-secondary btn-info" role="button" aria-pressed="true" style="	box-shadow: 0px 0px 4px  black;	text-shadow: 0px 0px 4px white;">Usuń</a>
+        </td>
+        <td>
+          <a th:href="@{'/personEntity/edit/' + ${person.personId}}" class="btn btn-sm btn-block btn-secondary btn-info" role="button" aria-pressed="true">Edytuj</a>
+        </td>
+      </tr>
     </tbody>
-</table>
+  </table>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+  <div class="py-5" style="">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="btn-group">
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
+            <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"><a class="btn btn-secondary" href="#">Secondary</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card"> <img class="card-img-top" src="https://static.pingendo.com/cover-moon.svg" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
